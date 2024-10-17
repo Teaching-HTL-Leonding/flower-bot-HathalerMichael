@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { OpenAIResponse, OpenAIService } from '../open-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
+import { Router, RouterLink } from '@angular/router';
 
 export type OpenAIDialog = {
   question : string;
@@ -10,7 +11,7 @@ export type OpenAIDialog = {
 @Component({
   selector: 'app-answer-question',
   standalone: true,
-  imports: [FormsModule, MarkdownModule],
+  imports: [FormsModule, MarkdownModule, RouterLink],
   templateUrl: './answer-question.component.html',
   styleUrl: './answer-question.component.css'
 })
