@@ -15,4 +15,7 @@
     <button type="submit">Answer</button>
   </div>
 </form>
-<markdown [data]="answer()"></markdown>
+<div class="dialogue">
+  <markdown class="output" [data]="output()" aria-placeholder="Ask a question"></markdown>
+</div>
+

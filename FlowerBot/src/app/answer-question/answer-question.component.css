@@ -18,3 +18,16 @@ form div input {
 form div button{
   padding:0.5rem;
 }
+
+.dialogue{
+  margin-top:3px;
+  border:1px solid black;
+  background-color: white;
+  width: 45rem;
+  height: auto;
+  padding:2.5rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
