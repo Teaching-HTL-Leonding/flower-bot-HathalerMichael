@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { OpenAIResponse, OpenAIService } from '../open-ai.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { Router, RouterLink } from '@angular/router';
+import { PromptComponent } from '../prompt/prompt.component';
+import { promptService } from '../prompt.service';
 
 export type OpenAIDialog = {
   question : string;
@@ -22,10 +24,12 @@ export class AnswerQuestionComponent {
 
   private readonly openAiService = inject(OpenAIService);
   private dialogues : OpenAIDialog[] = [];
+  private promptService = inject(promptService);
 
   async answerQuestion(){
     if (this.dialogues.length <= 20){
-      const response = await this.openAiService.answerQuestion(this.question());
+      const response = await this.openAiService.answerQuestion(this.question(), this.dialogues, promptService.getPrompt());
+
       this.dialogues.push({question: this.question(), answer: response.choices[0].message.content});
       let output ='';
       this.dialogues.forEach(dialogue =>{

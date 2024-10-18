@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import { OpenAIDialog } from './answer-question/answer-question.component';
 
 export type OpenAIResponse = {
   choices: {
@@ -21,7 +22,7 @@ export type OpenAIResponse = {
 export class OpenAIService {
   private httpClient = inject(HttpClient);
 
-  answerQuestion(question: string) : Promise<OpenAIResponse>{
+  answerQuestion(question: string, wholeDialouge : OpenAIDialog[], prompt : string) : Promise<OpenAIResponse>{
 
     return firstValueFrom(
       this.httpClient.post<OpenAIResponse>
@@ -30,10 +31,10 @@ export class OpenAIService {
           messages:
           [{
             role: 'system',
-            content: 'Answer like a pirate parrot 🏴‍☠️🐦🦜'},
+            content: prompt},
           {
             role:'user',
-            content: question
+            content: wholeDialouge + question,
           }]
         }
       )
