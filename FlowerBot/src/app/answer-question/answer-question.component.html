@@ -1,0 +1,22 @@
+<h2>Answer Question</h2>
+<button routerLink="/prompt">Enter new Prompt</button>
+
+<form (submit)="answerQuestion()">
+  <label for="question">Question</label>
+  <div>
+    <input type="text" id="question" name="question"
+    list="suggestions" placeholder="Enter Question here" [(ngModel)]="question">
+
+    <datalist id="suggestions">
+        <option>Are dolphin fisch?</option>
+        <option>Give me a checklist for a good body-weight training</option>
+        <option>How to train biceps</option>
+    </datalist>
+
+    <button type="submit">Answer</button>
+  </div>
+</form>
+<div class="dialogue">
+  <markdown class="output" [data]="output()" aria-placeholder="Ask a question"></markdown>
+</div>
+

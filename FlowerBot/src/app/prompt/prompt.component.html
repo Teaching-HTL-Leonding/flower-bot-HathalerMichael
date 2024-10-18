@@ -1,0 +1,24 @@
+
+<form>
+  <label for="prompt">Prompt</label>
+  <div>
+    <input type="text" id="prompt" name="prompt"
+    list="suggestions" placeholder="Enter Prompt here" [(ngModel)]="prompt">
+    <datalist id="suggestions">
+        <option>Answer like a pirate parrot 🦜☠</option>
+        <option>Anser like a litte child</option>
+        <option>You are a flowershop assitant. You should ask the cusotmer questions, on which
+          bousquet they should chooese. There are many flowers the customer can choose from:
+          Rose (red, yellow, purple)
+          Lily (yellow, pink, white)
+          Gerbera (pink, red, yellow)
+          Freesia (white, pink, red, yellow)
+          Tulips (red, yellow, purple)
+          Sunflowers (yellow).
+          Ignore all other questions, which arent related to it.
+        </option>
+    </datalist>
+    <button type="submit" (click)="storePrompt()">Use this Prompt</button>
+  </div>
+</form>
+<button routerLink="/">Back to the Chat Bot</button>
